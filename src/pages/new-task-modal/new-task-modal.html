@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons start>
+   <!--  represents the tick button, which allows user to upload their log when they are ready -->
+      <button ion-button icon-only (click)="onSubmit()">
+        <ion-icon name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      New Behaviour Log
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <ion-row no-padding>
+      <ion-col no-padding col-20 offset-3>
+        <!-- displays the image related to the task -->
+        <img [src]="image" alt="this is the image"/>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding class="user-image-row">
+      <ion-col no-padding width-60>
+        <!-- button that allows user to cycle through an array of images -->
+        <button class="image-action-button" ion-button outline block small (click)="openImagePicker()">Change Image Task</button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+<!-- Set up CORRECT and INCORRECT buttons -->
+  <div class="row">
+   <!-- CORRECT Button -->
+    <div class = "col">
+     <button ion-button color="secondary" icon-start (click)="correctResponse()"> CORRECT {{num_correct}}</button>
+    </div>
+    <!-- Inorrect Button -->
+     <div class = "col">
+      <button ion-button color="danger" icon-end (click)="incorrectResponse()" > INCORRECT {{num_incorrect}}</button>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar position="bottom">
+    <ion-buttons end>
+      <!-- button to allow user to go back to home page- menu page -->
+     <button ion-button (click)="dismiss()">GO HOME
+      <ion-icon name="md-home"></ion-icon>
+     </button>
+   </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+
+
+
+

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Logged Frequencies</ion-title>
+    <ion-buttons end>
+      <!-- button that navigates user to creating a new log -->
+      <button ion-button icon i-only (click)="openNewUserModal()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="list-mini-content">
+  <div class="list-mini">
+    <ion-list>
+      <!-- displays the already logged details of correct and incorrect value and the image task associated with it, also upon clicking on each it will navigate user to details page with the details associated with this log-->
+      <ion-item *ngFor="let item of items" (click)="viewDetails(item.payload.doc.id,item.payload.doc.data())">
+        <ion-thumbnail item-start>
+          <img [src]="item.payload.doc.data().image">
+        </ion-thumbnail>
+      <!--   specifies to display correct and than also incorrect values underneath too -->
+        <h2>Correct {{item.payload.doc.data().correct}}</h2>
+        <h2>Inorrect {{item.payload.doc.data().incorrect}}</h2>
+        <button ion-button clear item-end>Details</button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+<!-- a button for log out -->
+<ion-footer (click)="logout()">
+  <ion-toolbar color="primary">
+    <ion-title>Log out</ion-title>
+  </ion-toolbar>
+</ion-footer>
